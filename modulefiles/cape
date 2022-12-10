@@ -1,0 +1,40 @@
+#%Module1.0############################################################
+##
+## xflow modulefile
+##
+proc ModulesHelp { } {
+	global version modroot
+
+	puts stderr"\n\tThis module configures CAPE\n"
+}
+
+# Explain the file.
+module-whatis "loads PYCART"
+
+# Module parameters
+set     app        cape
+set     version    current
+
+# Local variables
+set  CAPE   /u/wk/hlee9/git/cape
+
+# Set environment variables
+setenv  CAPE              $CAPE
+setenv  PYCART            $CAPE
+setenv  PYFUN             $CAPE
+setenv  PYOVER            $CAPE
+setenv  CAPE_SCRIPTLIB    $CAPE/bin
+setenv  PYCART_SCRIPTLIB  $CAPE/bin
+setenv  PYFUN_SCRIPTLIB   $CAPE/bin
+setenv  PYOVER_SCRIPTLIB  $CAPE/bin
+
+# Modules in conflict
+conflict pycart
+conflict cape
+conflict pyfun
+conflict pyover
+
+# Folders to add to path
+prepend-path PYTHONPATH       $CAPE
+prepend-path PATH             $CAPE/bin
+
